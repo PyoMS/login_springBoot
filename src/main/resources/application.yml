@@ -1,0 +1,42 @@
+spring:
+  application:
+    name: login_springBoot
+  profiles:
+    active: local
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: create
+    properties:
+      hibernate:
+        default_batch_fetch_size: 1000
+        batch_fetch_style: PADDED
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;Mode=Oracle
+    username: sa
+    password:
+
+
+server:
+  port: 8080
+  shutdown: graceful
+  error:
+    whitelabel:
+      enabled: false
+  servlet:
+    session:
+      timeout: 3600
+logging:
+  level:
+    root: info
+    com.board: info
+    org.springframework.boot.autoconfigure.batch: error
